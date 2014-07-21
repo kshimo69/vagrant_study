@@ -83,6 +83,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # end
 
   config.omnibus.chef_version = :latest
+  config.berkshelf.enabled = true
 
   # Enable provisioning with chef solo, specifying a cookbooks path, roles
   # path, and data_bags path (all relative to this Vagrantfile), and adding
@@ -92,10 +93,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # DEBUG
     chef.log_level = "debug"
 
-    chef.cookbooks_path = "cookbooks"
+    chef.run_list = ["hello"]
+  #   chef.cookbooks_path = "cookbooks"
   #   chef.roles_path = "../my-recipes/roles"
   #   chef.data_bags_path = "../my-recipes/data_bags"
-    chef.add_recipe "apache"
+  #   chef.add_recipe "apache"
   #   chef.add_role "web"
   #
   #   # You may also specify custom JSON attributes:
